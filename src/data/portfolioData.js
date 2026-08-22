@@ -9,6 +9,7 @@ export const portfolioData = {
     email: "byroopesh@gmail.com",
     phone: "+91-8618925164",
     location: "Bangalore, India",
+    web3formsKey: "YOUR_WEB3FORMS_ACCESS_KEY_HERE",
     socials: {
       github: "https://github.com/Roopeshhh",
       linkedin: "https://www.linkedin.com/in/roopeshby",
@@ -22,7 +23,6 @@ export const portfolioData = {
     ]
   },
 
-  // 6 Clean Skill Categories with Core vs Secondary Hierarchy
   skills: [
     {
       category: "Frontend",
@@ -118,6 +118,20 @@ export const portfolioData = {
         "Participated in daily Agile/Scrum ceremonies, code reviews, and contributed to technical documentation and onboarding guides."
       ],
       technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "TypeScript", "Socket.io", "AWS EC2/S3", "Docker", "Git"]
+    }
+  ],
+
+  achievements: [
+    {
+      title: "PBCTF 5.0 — Capture The Flag (CTF) Competition",
+      organization: "Point Blank",
+      location: "Paytm Office, Bengaluru",
+      period: "Jul 2026",
+      category: "Cybersecurity & CTF Competition",
+      description: "Successfully participated in PBCTF 5.0, competing in hands-on cybersecurity and Capture The Flag challenges covering web application security, cryptography, vulnerability assessment, and problem-solving.",
+      credentialId: "d29908f3-5eda-4597-ad81-5ff0b4362503",
+      certificateUrl: "https://certificate.givemycertificate.com/c/d29908f3-5eda-4597-ad81-5ff0b4362503",
+      tags: ["Web Security", "CTF Challenges", "Cryptography", "Vulnerability Analysis", "Point Blank"]
     }
   ],
 

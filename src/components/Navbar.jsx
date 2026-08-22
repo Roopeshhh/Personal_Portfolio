@@ -19,16 +19,13 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // 1. Navbar background trigger
       setIsScrolled(window.scrollY > 20);
 
-      // 2. Scroll progress calculation
       const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
       if (totalHeight > 0) {
         setScrollProgress((window.scrollY / totalHeight) * 100);
       }
 
-      // 3. Active section spy
       const sections = ['projects', 'skills', 'experience', 'contact'];
       let current = '';
       for (const sectionId of sections) {
@@ -58,10 +55,10 @@ export default function Navbar() {
         />
       </div>
 
-      <header className="fixed top-0 left-0 right-0 z-40 flex justify-center px-4 py-4 transition-all duration-300">
+      <header className="fixed top-0 left-0 right-0 z-40 flex justify-center px-3 sm:px-4 py-3 sm:py-4 transition-all duration-300">
         <nav className={`w-full max-w-5xl rounded-2xl transition-all duration-300 ${isScrolled
-            ? 'glass-dock py-3 px-6 shadow-2xl shadow-black/60'
-            : 'bg-transparent py-4 px-6'
+            ? 'glass-dock py-2.5 sm:py-3 px-4 sm:px-6 shadow-2xl shadow-black/60'
+            : 'bg-transparent py-3 sm:py-4 px-4 sm:px-6'
           }`}>
           <div className="flex items-center justify-between">
 
@@ -80,7 +77,7 @@ export default function Navbar() {
               </div>
             </a>
 
-            {/* Desktop Nav Links with Active Indicator */}
+            {/* Desktop Nav Links */}
             <div className="hidden md:flex items-center gap-1 rounded-full px-3 py-1 glass-card border border-white/5">
               {navLinks.map((link) => {
                 const isActive = activeSection === link.id;
@@ -99,7 +96,7 @@ export default function Navbar() {
               })}
             </div>
 
-            {/* Right Action */}
+            {/* Right CTA */}
             <div className="hidden md:flex items-center gap-3">
               <a
                 href="#contact"
@@ -110,33 +107,41 @@ export default function Navbar() {
               </a>
             </div>
 
-            {/* Mobile Hamburger Toggle */}
+            {/* Mobile Hamburger Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle Navigation Menu"
-              className="md:hidden p-2 rounded-xl glass-card text-slate-300 hover:text-white"
+              className="md:hidden p-2 rounded-xl bg-slate-900/90 border border-white/10 text-slate-200 hover:text-white focus:outline-none"
             >
               {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
 
-          {/* Mobile Drawer */}
+          {/* FIXED Mobile Navigation Drawer (High Contrast & Always Solid) */}
           {isMobileMenuOpen && (
-            <div className="md:hidden pt-4 pb-2 border-t border-white/10 mt-3 flex flex-col gap-1.5 animate-fadeIn">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="px-4 py-2 text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
-                >
-                  {link.name}
-                </a>
-              ))}
+            <div className="md:hidden mt-3 p-4 rounded-2xl bg-[#0d131f]/98 backdrop-blur-2xl border border-white/15 shadow-2xl shadow-black flex flex-col gap-2 animate-fadeIn">
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.id;
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`px-4 py-2.5 text-sm font-medium rounded-xl transition-colors flex items-center justify-between ${isActive
+                        ? 'bg-aurora-cyan/15 text-aurora-cyan font-semibold border border-aurora-cyan/30'
+                        : 'text-slate-200 hover:bg-white/10 hover:text-white'
+                      }`}
+                  >
+                    <span>{link.name}</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 opacity-50" />
+                  </a>
+                );
+              })}
+
               <a
                 href="#contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="mt-2 text-center text-xs font-semibold px-4 py-2.5 rounded-xl bg-aurora-cyan/20 text-aurora-cyan border border-aurora-cyan/30"
+                className="mt-2 text-center text-xs font-semibold px-4 py-3 rounded-xl bg-gradient-to-r from-aurora-cyan to-aurora-indigo text-slate-950 shadow-md font-sans"
               >
                 Get in Touch
               </a>
