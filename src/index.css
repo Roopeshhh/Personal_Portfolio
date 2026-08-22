@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+/* Define Custom Theme Variables for Tailwind v4 */
+@theme {
+  --color-canvas: #080b11;
+  --color-canvas-elevated: #0d131f;
+  --color-canvas-card: #111827;
+  --color-canvas-border: rgba(255, 255, 255, 0.08);
+
+  --color-aurora-cyan: #38bdf8;
+  --color-aurora-indigo: #6366f1;
+  --color-aurora-emerald: #10b981;
+  --color-aurora-violet: #a855f7;
+
+  --font-display: "Plus Jakarta Sans", sans-serif;
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --animate-aurora-slow: aurora 18s ease-in-out infinite alternate;
+  --animate-pulse-subtle: pulseSubtle 3s ease-in-out infinite;
+
+  @keyframes aurora {
+    0% {
+      transform: translate(0px, 0px) scale(1);
+    }
+    50% {
+      transform: translate(40px, -30px) scale(1.1);
+    }
+    100% {
+      transform: translate(-20px, 30px) scale(0.95);
+    }
+  }
+
+  @keyframes pulseSubtle {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+}
+
+/* Base Reset & Smooth Scrolling */
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+/* Custom Minimalist Dark Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #080b11;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Glassmorphism & Gradient Utilities */
+.glass-card {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.glass-card:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.glass-dock {
+  background: rgba(8, 11, 17, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+}
+
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #ffffff, #e2e8f0, #94a3b8);
+}
+
+.text-aurora {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #38bdf8, #6366f1, #a855f7);
+}
+
+/* Accessibility: Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
