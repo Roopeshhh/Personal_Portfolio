@@ -1,6 +1,6 @@
 import React from 'react';
 import { portfolioData } from '../data/portfolioData';
-import { ArrowRight, Mail, Sparkles, Cpu, Layers, Zap } from 'lucide-react';
+import { ArrowRight, Mail, Sparkles, Cpu, Layers, Zap, MapPin, FileText, ArrowUpRight } from 'lucide-react';
 
 const GithubIcon = () => (
   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -18,14 +18,14 @@ export default function Hero() {
   const { personal } = portfolioData;
 
   return (
-    <section id="about" className="relative min-h-[90vh] flex items-center justify-center pt-32 pb-20 px-6">
-      <div className="max-w-6xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <section id="about" className="relative min-h-[90vh] flex items-center justify-center pt-28 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6">
+      <div className="max-w-6xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center">
 
         {/* Left Column: Natural Editorial Copy */}
         <div className="lg:col-span-7 flex flex-col items-start text-left">
 
           {/* Status Badge */}
-          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full glass-card border border-white/10 text-xs font-mono text-aurora-emerald mb-6">
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full glass-card border border-white/10 text-xs font-mono text-aurora-emerald mb-5 sm:mb-6">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-aurora-emerald opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-aurora-emerald"></span>
@@ -34,46 +34,59 @@ export default function Hero() {
           </div>
 
           {/* Clean Headline */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold tracking-tight leading-[1.15] mb-6">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-display font-extrabold tracking-tight leading-[1.15] mb-5 sm:mb-6">
             <span className="text-gradient block">Building scalable</span>
             <span className="text-aurora block">Full-Stack Applications</span>
-            <span className="text-slate-300 text-3xl sm:text-4xl lg:text-5xl font-semibold mt-1 block">
+            <span className="text-slate-300 text-2xl sm:text-4xl lg:text-5xl font-semibold mt-1 block">
               with MERN.
             </span>
           </h1>
 
           {/* Grounded Bio */}
-          <p className="text-base sm:text-lg text-slate-400 font-normal leading-relaxed mb-8 max-w-xl">
+          <p className="text-sm sm:text-base lg:text-lg text-slate-400 font-normal leading-relaxed mb-6 sm:mb-8 max-w-xl">
             {personal.bio}
           </p>
 
           {/* Action Triggers */}
-          <div className="flex flex-wrap items-center gap-4 mb-10 w-full sm:w-auto">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-8 sm:mb-10 w-full sm:w-auto">
             <a
               href="#projects"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-aurora-cyan to-aurora-indigo text-slate-950 font-semibold text-sm hover:opacity-95 hover:shadow-lg hover:shadow-aurora-cyan/20 transition-all group"
+              className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl bg-gradient-to-r from-aurora-cyan to-aurora-indigo text-slate-950 font-semibold text-xs sm:text-sm hover:opacity-95 hover:shadow-lg hover:shadow-aurora-cyan/20 transition-all group"
             >
               <span>View Projects</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
 
+            {personal.resumeUrl && (
+              <a
+                href={personal.resumeUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl glass-card text-white font-medium text-xs sm:text-sm hover:bg-white/10 border border-white/10 hover:border-aurora-cyan/40 transition-all group"
+              >
+                <FileText className="w-4 h-4 text-aurora-indigo" />
+                <span>Resume</span>
+                <ArrowUpRight className="w-3.5 h-3.5 opacity-60 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
+            )}
+
             <a
               href="#contact"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl glass-card text-white font-medium text-sm hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all"
+              className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl glass-card text-slate-300 hover:text-white font-medium text-xs sm:text-sm hover:bg-white/5 border border-white/5 hover:border-white/15 transition-all"
             >
-              <span>Get in Touch</span>
+              <span>Contact Me</span>
             </a>
           </div>
 
           {/* Social Channels & Core Stack */}
-          <div className="flex items-center gap-6 pt-4 border-t border-white/5 w-full">
-            <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-4 border-t border-white/5 w-full">
+            <div className="flex items-center gap-2.5 sm:gap-3">
               <a
                 href={personal.socials.github}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="GitHub Profile"
-                className="p-2.5 rounded-xl glass-card text-slate-400 hover:text-white hover:border-aurora-cyan/40 transition-colors"
+                className="p-2 sm:p-2.5 rounded-xl glass-card text-slate-400 hover:text-white hover:border-aurora-cyan/40 transition-colors"
               >
                 <GithubIcon />
               </a>
@@ -82,20 +95,20 @@ export default function Hero() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn Profile"
-                className="p-2.5 rounded-xl glass-card text-slate-400 hover:text-white hover:border-aurora-cyan/40 transition-colors"
+                className="p-2 sm:p-2.5 rounded-xl glass-card text-slate-400 hover:text-white hover:border-aurora-cyan/40 transition-colors"
               >
                 <LinkedinIcon />
               </a>
               <a
                 href={`mailto:${personal.email}`}
                 aria-label="Email Roopesh"
-                className="p-2.5 rounded-xl glass-card text-slate-400 hover:text-white hover:border-aurora-cyan/40 transition-colors"
+                className="p-2 sm:p-2.5 rounded-xl glass-card text-slate-400 hover:text-white hover:border-aurora-cyan/40 transition-colors"
               >
                 <Mail className="w-4 h-4" />
               </a>
             </div>
 
-            <div className="h-4 w-[1px] bg-white/10"></div>
+            <div className="hidden sm:block h-4 w-[1px] bg-white/10"></div>
 
             <span className="text-xs font-mono text-slate-400">
               React • Node.js • Express • MongoDB • AWS
@@ -103,70 +116,86 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right Column: Grounded Engineering Bento Card */}
-        <div className="lg:col-span-5 flex justify-center">
-          <div className="w-full max-w-md p-6 rounded-3xl glass-card relative group">
+        {/* Right Column: Grounded Engineering Bento Card with Headshot */}
+        <div className="lg:col-span-5 flex justify-center w-full">
+          <div className="w-full max-w-md p-5 sm:p-6 rounded-3xl glass-card relative group">
 
-            {/* Top Bar */}
-            <div className="flex items-center justify-between pb-4 mb-5 border-b border-white/10">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block"></span>
-                <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80 inline-block"></span>
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block"></span>
+            {/* Top Profile Header with Headshot */}
+            <div className="flex items-center gap-4 pb-4 mb-4 border-b border-white/10">
+              <div className="relative shrink-0">
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-aurora-cyan to-aurora-indigo rounded-2xl blur opacity-40 group-hover:opacity-75 transition duration-300"></div>
+                <img
+                  src={personal.avatarUrl || "/profile.jpg"}
+                  alt={personal.name}
+                  className="relative w-16 h-16 sm:w-18 sm:h-18 object-cover object-top rounded-2xl border border-white/20 shadow-2xl"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                  }}
+                />
+                <span className="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-aurora-emerald border-2 border-canvas shadow-md"></span>
               </div>
-              <div className="flex items-center gap-1.5 text-[11px] font-mono text-slate-400">
-                <Cpu className="w-3.5 h-3.5 text-aurora-cyan" />
-                <span>developer.profile</span>
+
+              <div className="min-w-0">
+                <h2 className="font-display font-bold text-base sm:text-lg text-white truncate">
+                  {personal.name}
+                </h2>
+                <p className="text-xs font-medium text-aurora-cyan truncate">
+                  Software Engineer @ Cognizants
+                </p>
+                <p className="text-[11px] font-mono text-slate-400 flex items-center gap-1 mt-0.5">
+                  <MapPin className="w-3 h-3 text-slate-500" />
+                  <span>{personal.location}</span>
+                </p>
               </div>
             </div>
 
             {/* Quick Metrics */}
-            <div className="grid grid-cols-2 gap-3 mb-5">
-              <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/5">
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-3 mb-4">
+              <div className="p-3 sm:p-3.5 rounded-2xl bg-white/[0.03] border border-white/5">
                 <div className="flex items-center gap-1.5 text-aurora-cyan mb-1">
                   <Zap className="w-3.5 h-3.5" />
                   <span className="text-[10px] font-mono uppercase tracking-wider">Performance</span>
                 </div>
-                <div className="text-xl font-display font-bold text-white">~40%</div>
+                <div className="text-lg sm:text-xl font-display font-bold text-white">~40%</div>
                 <div className="text-[11px] text-slate-400">Page load reduction</div>
               </div>
 
-              <div className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/5">
+              <div className="p-3 sm:p-3.5 rounded-2xl bg-white/[0.03] border border-white/5">
                 <div className="flex items-center gap-1.5 text-aurora-emerald mb-1">
                   <Layers className="w-3.5 h-3.5" />
                   <span className="text-[10px] font-mono uppercase tracking-wider">Component Reuse</span>
                 </div>
-                <div className="text-xl font-display font-bold text-white">30%</div>
+                <div className="text-lg sm:text-xl font-display font-bold text-white">30%</div>
                 <div className="text-[11px] text-slate-400">Faster UI delivery</div>
               </div>
             </div>
 
             {/* Core Stack Snapshot */}
-            <div className="space-y-2.5 p-4 rounded-2xl bg-black/40 border border-white/5 font-mono text-xs text-slate-300">
+            <div className="space-y-2 p-3.5 sm:p-4 rounded-2xl bg-black/40 border border-white/5 font-mono text-xs text-slate-300">
               <div className="flex items-center justify-between text-slate-400 text-[11px]">
                 <span>// Primary Stack</span>
                 <span className="text-aurora-cyan">MERN + AWS</span>
               </div>
-              <div className="text-slate-300">
+              <div className="text-slate-300 text-[11px] sm:text-xs">
                 <span className="text-aurora-indigo font-bold">const</span> techStack = [
               </div>
-              <div className="pl-4 text-slate-400 space-y-1 text-[11px]">
+              <div className="pl-3.5 text-slate-400 space-y-0.5 text-[11px]">
                 <div><span className="text-emerald-400">'React.js & Redux Toolkit'</span>,</div>
                 <div><span className="text-emerald-400">'Node.js & Express REST APIs'</span>,</div>
                 <div><span className="text-emerald-400">'MongoDB & Redis Caching'</span>,</div>
                 <div><span className="text-emerald-400">'Socket.io Real-Time'</span>,</div>
                 <div><span className="text-emerald-400">'AWS EC2 / S3 & Docker'</span></div>
               </div>
-              <div className="text-slate-300">];</div>
+              <div className="text-slate-300 text-[11px] sm:text-xs">];</div>
             </div>
 
             {/* Status Footer */}
-            <div className="mt-4 pt-3 flex items-center justify-between text-xs text-slate-400">
+            <div className="mt-3.5 pt-3 flex items-center justify-between text-xs text-slate-400 border-t border-white/5">
               <div className="flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-aurora-cyan" />
-                <span>Cognizants Experience</span>
+                <span>3+ Years Experience</span>
               </div>
-              <span className="font-mono text-slate-500">Bangalore, IN</span>
+              <span className="font-mono text-slate-500 text-[11px]">Full Stack MERN</span>
             </div>
 
           </div>

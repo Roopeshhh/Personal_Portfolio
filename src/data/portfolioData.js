@@ -3,6 +3,7 @@ export const portfolioData = {
     name: "Roopesh BY",
     role: "Full Stack Developer",
     experienceYears: "3+ Years",
+    avatarUrl: "/profile.jpg",
     tagline: "Building scalable full-stack applications with MERN.",
     bio: "I'm a Full Stack Developer with 3+ years of experience building web applications with React, Node.js, Express.js, and MongoDB. I work across frontend engineering, backend REST APIs, real-time communication, performance optimization, and cloud deployment on AWS.",
     availability: "Available for Full-time Roles & Contracts",
@@ -14,7 +15,7 @@ export const portfolioData = {
       github: "https://github.com/Roopeshhh",
       linkedin: "https://www.linkedin.com/in/roopeshby",
     },
-    resumeUrl: "#",
+    resumeUrl: "https://drive.google.com/file/d/1nyfADlicEDWkm5Zyi_gIphRzWERSftla/view?usp=drive_link",
     stats: [
       { label: "Experience", value: "3+ Years" },
       { label: "Primary Stack", value: "MERN Stack" },

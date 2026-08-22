@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { portfolioData } from '../data/portfolioData';
-import { Menu, X, ArrowUpRight, Terminal } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Terminal, FileText } from 'lucide-react';
 
 export default function Navbar() {
   const { personal } = portfolioData;
@@ -96,8 +96,21 @@ export default function Navbar() {
               })}
             </div>
 
-            {/* Right CTA */}
-            <div className="hidden md:flex items-center gap-3">
+            {/* Right CTAs (Resume + Let's Talk) */}
+            <div className="hidden md:flex items-center gap-2.5">
+              {personal.resumeUrl && (
+                <a
+                  href={personal.resumeUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-medium px-3.5 py-2 rounded-xl glass-card text-slate-300 hover:text-white hover:border-white/20 transition-all"
+                >
+                  <FileText className="w-3.5 h-3.5 text-aurora-indigo" />
+                  <span>Resume</span>
+                  <ArrowUpRight className="w-3 h-3 opacity-60" />
+                </a>
+              )}
+
               <a
                 href="#contact"
                 className="inline-flex items-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15 text-white border border-white/10 hover:border-aurora-cyan/40 transition-all group"
@@ -117,7 +130,7 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* FIXED Mobile Navigation Drawer (High Contrast & Always Solid) */}
+          {/* Mobile Navigation Drawer */}
           {isMobileMenuOpen && (
             <div className="md:hidden mt-3 p-4 rounded-2xl bg-[#0d131f]/98 backdrop-blur-2xl border border-white/15 shadow-2xl shadow-black flex flex-col gap-2 animate-fadeIn">
               {navLinks.map((link) => {
@@ -138,10 +151,26 @@ export default function Navbar() {
                 );
               })}
 
+              {personal.resumeUrl && (
+                <a
+                  href={personal.resumeUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="px-4 py-2.5 text-sm font-medium rounded-xl bg-white/5 border border-white/10 text-slate-200 hover:text-white flex items-center justify-between"
+                >
+                  <span className="flex items-center gap-2">
+                    <FileText className="w-4 h-4 text-aurora-indigo" />
+                    <span>View Resume</span>
+                  </span>
+                  <ArrowUpRight className="w-4 h-4 text-aurora-indigo" />
+                </a>
+              )}
+
               <a
                 href="#contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="mt-2 text-center text-xs font-semibold px-4 py-3 rounded-xl bg-gradient-to-r from-aurora-cyan to-aurora-indigo text-slate-950 shadow-md font-sans"
+                className="mt-1 text-center text-xs font-semibold px-4 py-3 rounded-xl bg-gradient-to-r from-aurora-cyan to-aurora-indigo text-slate-950 shadow-md font-sans"
               >
                 Get in Touch
               </a>
