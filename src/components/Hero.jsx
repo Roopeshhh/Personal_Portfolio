@@ -25,7 +25,7 @@ export default function Hero() {
         <div className="lg:col-span-7 flex flex-col items-start text-left">
 
           {/* Status Badge */}
-          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full glass-card border border-white/10 text-xs font-mono text-aurora-emerald mb-5 sm:mb-6">
+          <div className="animate-hero-fade [animation-delay:100ms] inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full glass-card border border-white/10 text-xs font-mono text-aurora-emerald mb-5 sm:mb-6">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-aurora-emerald opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-aurora-emerald"></span>
@@ -33,8 +33,8 @@ export default function Hero() {
             <span>{personal.availability}</span>
           </div>
 
-          {/* Clean Headline */}
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-display font-extrabold tracking-tight leading-[1.15] mb-5 sm:mb-6">
+          {/* Clean Headline with Instant Entrance */}
+          <h1 className="animate-hero-fade [animation-delay:200ms] text-3xl sm:text-5xl lg:text-6xl font-display font-extrabold tracking-tight leading-[1.15] mb-5 sm:mb-6">
             <span className="text-gradient block">Building scalable</span>
             <span className="text-aurora block">Full-Stack Applications</span>
             <span className="text-slate-300 text-2xl sm:text-4xl lg:text-5xl font-semibold mt-1 block">
@@ -43,12 +43,12 @@ export default function Hero() {
           </h1>
 
           {/* Grounded Bio */}
-          <p className="text-sm sm:text-base lg:text-lg text-slate-400 font-normal leading-relaxed mb-6 sm:mb-8 max-w-xl">
+          <p className="animate-hero-fade [animation-delay:300ms] text-sm sm:text-base lg:text-lg text-slate-400 font-normal leading-relaxed mb-6 sm:mb-8 max-w-xl">
             {personal.bio}
           </p>
 
-          {/* Action Triggers */}
-          <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-8 sm:mb-10 w-full sm:w-auto">
+          {/* Action Triggers — 100% VISIBLE IMMEDIATELY ON LOAD */}
+          <div className="animate-hero-fade [animation-delay:400ms] flex flex-wrap items-center gap-3 sm:gap-4 mb-8 sm:mb-10 w-full sm:w-auto">
             <a
               href="#projects"
               className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-xl bg-gradient-to-r from-aurora-cyan to-aurora-indigo text-slate-950 font-semibold text-xs sm:text-sm hover:opacity-95 hover:shadow-lg hover:shadow-aurora-cyan/20 transition-all group"
@@ -79,7 +79,7 @@ export default function Hero() {
           </div>
 
           {/* Social Channels & Core Stack */}
-          <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-4 border-t border-white/5 w-full">
+          <div className="animate-hero-fade [animation-delay:500ms] flex flex-wrap items-center gap-4 sm:gap-6 pt-4 border-t border-white/5 w-full">
             <div className="flex items-center gap-2.5 sm:gap-3">
               <a
                 href={personal.socials.github}
@@ -118,86 +118,88 @@ export default function Hero() {
 
         {/* Right Column: Grounded Engineering Bento Card with Headshot */}
         <div className="lg:col-span-5 flex justify-center w-full">
-          <div className="w-full max-w-md p-5 sm:p-6 rounded-3xl glass-card relative group">
+          <div className="animate-hero-fade [animation-delay:300ms] w-full max-w-md">
+            <div className="w-full p-5 sm:p-6 rounded-3xl glass-card relative group">
 
-            {/* Top Profile Header with Headshot */}
-            <div className="flex items-center gap-4 pb-4 mb-4 border-b border-white/10">
-              <div className="relative shrink-0">
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-aurora-cyan to-aurora-indigo rounded-2xl blur opacity-40 group-hover:opacity-75 transition duration-300"></div>
-                <img
-                  src={personal.avatarUrl || "/profile.jpg"}
-                  alt={personal.name}
-                  className="relative w-16 h-16 sm:w-18 sm:h-18 object-cover object-top rounded-2xl border border-white/20 shadow-2xl"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                  }}
-                />
-                <span className="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-aurora-emerald border-2 border-canvas shadow-md"></span>
-              </div>
-
-              <div className="min-w-0">
-                <h2 className="font-display font-bold text-base sm:text-lg text-white truncate">
-                  {personal.name}
-                </h2>
-                <p className="text-xs font-medium text-aurora-cyan truncate">
-                  Software Engineer @ Cognizants
-                </p>
-                <p className="text-[11px] font-mono text-slate-400 flex items-center gap-1 mt-0.5">
-                  <MapPin className="w-3 h-3 text-slate-500" />
-                  <span>{personal.location}</span>
-                </p>
-              </div>
-            </div>
-
-            {/* Quick Metrics */}
-            <div className="grid grid-cols-2 gap-2.5 sm:gap-3 mb-4">
-              <div className="p-3 sm:p-3.5 rounded-2xl bg-white/[0.03] border border-white/5">
-                <div className="flex items-center gap-1.5 text-aurora-cyan mb-1">
-                  <Zap className="w-3.5 h-3.5" />
-                  <span className="text-[10px] font-mono uppercase tracking-wider">Performance</span>
+              {/* Top Profile Header with Headshot */}
+              <div className="flex items-center gap-4 pb-4 mb-4 border-b border-white/10">
+                <div className="relative shrink-0">
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-aurora-cyan to-aurora-indigo rounded-2xl blur opacity-40 group-hover:opacity-75 transition duration-300"></div>
+                  <img
+                    src={personal.avatarUrl || "/profile.jpg"}
+                    alt={personal.name}
+                    className="relative w-16 h-16 sm:w-18 sm:h-18 object-cover object-top rounded-2xl border border-white/20 shadow-2xl img-zoom"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                    }}
+                  />
+                  <span className="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-aurora-emerald border-2 border-canvas shadow-md"></span>
                 </div>
-                <div className="text-lg sm:text-xl font-display font-bold text-white">~40%</div>
-                <div className="text-[11px] text-slate-400">Page load reduction</div>
-              </div>
 
-              <div className="p-3 sm:p-3.5 rounded-2xl bg-white/[0.03] border border-white/5">
-                <div className="flex items-center gap-1.5 text-aurora-emerald mb-1">
-                  <Layers className="w-3.5 h-3.5" />
-                  <span className="text-[10px] font-mono uppercase tracking-wider">Component Reuse</span>
+                <div className="min-w-0">
+                  <h2 className="font-display font-bold text-base sm:text-lg text-white truncate">
+                    {personal.name}
+                  </h2>
+                  <p className="text-xs font-medium text-aurora-cyan truncate">
+                    Software Engineer @ Cognizants
+                  </p>
+                  <p className="text-[11px] font-mono text-slate-400 flex items-center gap-1 mt-0.5">
+                    <MapPin className="w-3 h-3 text-slate-500" />
+                    <span>{personal.location}</span>
+                  </p>
                 </div>
-                <div className="text-lg sm:text-xl font-display font-bold text-white">30%</div>
-                <div className="text-[11px] text-slate-400">Faster UI delivery</div>
               </div>
-            </div>
 
-            {/* Core Stack Snapshot */}
-            <div className="space-y-2 p-3.5 sm:p-4 rounded-2xl bg-black/40 border border-white/5 font-mono text-xs text-slate-300">
-              <div className="flex items-center justify-between text-slate-400 text-[11px]">
-                <span>// Primary Stack</span>
-                <span className="text-aurora-cyan">MERN + AWS</span>
-              </div>
-              <div className="text-slate-300 text-[11px] sm:text-xs">
-                <span className="text-aurora-indigo font-bold">const</span> techStack = [
-              </div>
-              <div className="pl-3.5 text-slate-400 space-y-0.5 text-[11px]">
-                <div><span className="text-emerald-400">'React.js & Redux Toolkit'</span>,</div>
-                <div><span className="text-emerald-400">'Node.js & Express REST APIs'</span>,</div>
-                <div><span className="text-emerald-400">'MongoDB & Redis Caching'</span>,</div>
-                <div><span className="text-emerald-400">'Socket.io Real-Time'</span>,</div>
-                <div><span className="text-emerald-400">'AWS EC2 / S3 & Docker'</span></div>
-              </div>
-              <div className="text-slate-300 text-[11px] sm:text-xs">];</div>
-            </div>
+              {/* Quick Metrics */}
+              <div className="grid grid-cols-2 gap-2.5 sm:gap-3 mb-4">
+                <div className="p-3 sm:p-3.5 rounded-2xl bg-white/[0.03] border border-white/5 group-hover:border-aurora-cyan/20 transition-colors">
+                  <div className="flex items-center gap-1.5 text-aurora-cyan mb-1">
+                    <Zap className="w-3.5 h-3.5" />
+                    <span className="text-[10px] font-mono uppercase tracking-wider">Performance</span>
+                  </div>
+                  <div className="text-lg sm:text-xl font-display font-bold text-white">~40%</div>
+                  <div className="text-[11px] text-slate-400">Page load reduction</div>
+                </div>
 
-            {/* Status Footer */}
-            <div className="mt-3.5 pt-3 flex items-center justify-between text-xs text-slate-400 border-t border-white/5">
-              <div className="flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-aurora-cyan" />
-                <span>3+ Years Experience</span>
+                <div className="p-3 sm:p-3.5 rounded-2xl bg-white/[0.03] border border-white/5 group-hover:border-aurora-emerald/20 transition-colors">
+                  <div className="flex items-center gap-1.5 text-aurora-emerald mb-1">
+                    <Layers className="w-3.5 h-3.5" />
+                    <span className="text-[10px] font-mono uppercase tracking-wider">Component Reuse</span>
+                  </div>
+                  <div className="text-lg sm:text-xl font-display font-bold text-white">30%</div>
+                  <div className="text-[11px] text-slate-400">Faster UI delivery</div>
+                </div>
               </div>
-              <span className="font-mono text-slate-500 text-[11px]">Full Stack MERN</span>
-            </div>
 
+              {/* Core Stack Snapshot */}
+              <div className="space-y-2 p-3.5 sm:p-4 rounded-2xl bg-black/40 border border-white/5 font-mono text-xs text-slate-300">
+                <div className="flex items-center justify-between text-slate-400 text-[11px]">
+                  <span>// Primary Stack</span>
+                  <span className="text-aurora-cyan">MERN + AWS</span>
+                </div>
+                <div className="text-slate-300 text-[11px] sm:text-xs">
+                  <span className="text-aurora-indigo font-bold">const</span> techStack = [
+                </div>
+                <div className="pl-3.5 text-slate-400 space-y-0.5 text-[11px]">
+                  <div><span className="text-emerald-400">'React.js & Redux Toolkit'</span>,</div>
+                  <div><span className="text-emerald-400">'Node.js & Express REST APIs'</span>,</div>
+                  <div><span className="text-emerald-400">'MongoDB & Redis Caching'</span>,</div>
+                  <div><span className="text-emerald-400">'Socket.io Real-Time'</span>,</div>
+                  <div><span className="text-emerald-400">'AWS EC2 / S3 & Docker'</span></div>
+                </div>
+                <div className="text-slate-300 text-[11px] sm:text-xs">];</div>
+              </div>
+
+              {/* Status Footer */}
+              <div className="mt-3.5 pt-3 flex items-center justify-between text-xs text-slate-400 border-t border-white/5">
+                <div className="flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-aurora-cyan" />
+                  <span>3+ Years Experience</span>
+                </div>
+                <span className="font-mono text-slate-500 text-[11px]">Full Stack MERN</span>
+              </div>
+
+            </div>
           </div>
         </div>
 

@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* Define Custom Theme Variables for Tailwind v4 */
 @theme {
   --color-canvas: #080b11;
   --color-canvas-elevated: #0d131f;
@@ -23,61 +22,69 @@
     0% {
       transform: translate(0px, 0px) scale(1);
     }
+
     50% {
       transform: translate(40px, -30px) scale(1.1);
     }
+
     100% {
       transform: translate(-20px, 30px) scale(0.95);
     }
   }
 
   @keyframes pulseSubtle {
+
     0%,
     100% {
       opacity: 1;
     }
+
     50% {
       opacity: 0.6;
     }
   }
 }
 
-/* Base Reset & Smooth Scrolling */
 html {
   color-scheme: dark;
   scroll-behavior: smooth;
 }
 
-/* Custom Minimalist Dark Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: #080b11;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #1e293b;
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: #334155;
 }
 
-/* Glassmorphism & Gradient Utilities */
+/* Glassmorphism & Spotlight Utilities */
 .glass-card {
   background: rgba(15, 23, 42, 0.65);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .glass-card:hover {
-  border-color: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.7);
 }
 
 .glass-dock {
-  background: rgba(8, 11, 17, 0.8);
+  background: rgba(8, 11, 17, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.09);
@@ -98,8 +105,36 @@ html {
   background-image: linear-gradient(to right, #38bdf8, #6366f1, #a855f7);
 }
 
+/* Instant Hero Page-Load Animations (No Scroll Required) */
+@keyframes heroEntrance {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+    filter: blur(6px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0px);
+  }
+}
+
+.animate-hero-fade {
+  animation: heroEntrance 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.group:hover .img-zoom {
+  transform: scale(1.04);
+}
+
+.img-zoom {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 /* Accessibility: Respect Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   ::before,
   ::after {
@@ -107,5 +142,7 @@ html {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+    transform: none !important;
+    filter: none !important;
   }
 }
